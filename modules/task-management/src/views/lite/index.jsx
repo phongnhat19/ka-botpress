@@ -1,7 +1,7 @@
 import React from 'react'
 
-export class LiteView extends React.Component {
+export class KintoneTask extends React.Component {
   render() {
-    return null
+    return <div>Kintone task</div>
   }
 }

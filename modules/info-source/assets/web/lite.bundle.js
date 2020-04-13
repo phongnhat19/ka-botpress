@@ -88,9 +88,9 @@ botpress = typeof botpress === "object" ? botpress : {}; botpress["info-source"]
 /******/ ({
 
 /***/ "../../build/module-builder/node_modules/css-loader/index.js!./src/views/lite/components/style.css":
-/*!**************************************************************************************************************!*\
-  !*** /Users/sly/botpress/build/module-builder/node_modules/css-loader!./src/views/lite/components/style.css ***!
-  \**************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** /Users/n001417/Desktop/Project/Prototype/ka-botpress/build/module-builder/node_modules/css-loader!./src/views/lite/components/style.css ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -107,9 +107,9 @@ exports.push([module.i, ".bpw-infosource-question {\n  color: #8b8c8d;\n  paddin
 /***/ }),
 
 /***/ "../../build/module-builder/node_modules/css-loader/lib/css-base.js":
-/*!****************************************************************************************!*\
-  !*** /Users/sly/botpress/build/module-builder/node_modules/css-loader/lib/css-base.js ***!
-  \****************************************************************************************/
+/*!*************************************************************************************************************************!*\
+  !*** /Users/n001417/Desktop/Project/Prototype/ka-botpress/build/module-builder/node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -194,9 +194,9 @@ function toComment(sourceMap) {
 /***/ }),
 
 /***/ "../../build/module-builder/node_modules/style-loader/lib/addStyles.js":
-/*!*******************************************************************************************!*\
-  !*** /Users/sly/botpress/build/module-builder/node_modules/style-loader/lib/addStyles.js ***!
-  \*******************************************************************************************/
+/*!****************************************************************************************************************************!*\
+  !*** /Users/n001417/Desktop/Project/Prototype/ka-botpress/build/module-builder/node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -601,9 +601,9 @@ function updateLink (link, options, obj) {
 /***/ }),
 
 /***/ "../../build/module-builder/node_modules/style-loader/lib/urls.js":
-/*!**************************************************************************************!*\
-  !*** /Users/sly/botpress/build/module-builder/node_modules/style-loader/lib/urls.js ***!
-  \**************************************************************************************/
+/*!***********************************************************************************************************************!*\
+  !*** /Users/n001417/Desktop/Project/Prototype/ka-botpress/build/module-builder/node_modules/style-loader/lib/urls.js ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
