@@ -1,4 +1,4 @@
-const base = require('./_base');
+// const base = require('./_base');
 
 function render(data) {
   const events = [];
@@ -52,7 +52,7 @@ module.exports = {
         type: 'string',
         title: 'Task URL'
       },
-      ...base.typingIndicators
+      // ...base.typingIndicators
     }
   },
   uiSchema: {
