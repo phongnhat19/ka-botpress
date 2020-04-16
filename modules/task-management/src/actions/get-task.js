@@ -1,7 +1,7 @@
 /**
  * Get task(s) from kintone
  * @title Get task(s) from kintone
- * @category Storage
+ * @category Task Management
  * @author Nhat Nguyen
  * @param {string} assignee - The assignee (user code) of task
  * @param {string} status - The status of task
