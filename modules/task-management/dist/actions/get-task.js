@@ -13,9 +13,22 @@ const getTask = async (assignee, status, dueDateString) => {
     return
   }
 
+  const userData = await bp.users.getAttributes(event.channel, event.target);
+  bp.logger.info(JSON.stringify(userData))
+
   const dueDate = new Date(dueDateString);
 
   const messages = [
+    {
+      type: 'text',
+      text: `Channel: **${event.channel}**`,
+      markdown: true
+    },
+    {
+      type: 'text',
+      text: `User: **${event.target}**`,
+      markdown: true
+    },
     {
       type: 'text',
       text: `Assignee: **${assignee}**`,
@@ -29,6 +42,16 @@ const getTask = async (assignee, status, dueDateString) => {
     {
       type: 'text',
       text: `Due date: **${dueDate.toLocaleDateString()}**`,
+      markdown: true
+    },
+    {
+      type: 'text',
+      text: `App ID: **${event.state.user['appID']}**`,
+      markdown: true
+    },
+    {
+      type: 'text',
+      text: `Domain: **${event.state.user['domain']}**`,
       markdown: true
     }
   ]
