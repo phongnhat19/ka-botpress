@@ -8,19 +8,28 @@
 const setTaskAppID = async (appID) => {
 
   try {
-    await bp.users.updateAttributes(event.channel, event.target, {
-      appID
-    });
+    event.state.user['appID'] = appID
+
     const messages = [
       {
         type: 'text',
-        text: `Task app ID for **${event.target}** is set to **${appID}**`,
+        text: `Channel **${event.channel}**`,
+        markdown: true
+      },
+      {
+        type: 'text',
+        text: `User **${event.target}**`,
+        markdown: true
+      },
+      {
+        type: 'text',
+        text: `Task app ID is set to **${appID}**`,
         markdown: true
       }
     ]
     await bp.events.replyToEvent(event, messages)
   } catch (error) {
-    bp.logger.error(error)
+    bp.logger.error(JSON.stringify(error))
     const messages = [
       {
         type: 'text',
