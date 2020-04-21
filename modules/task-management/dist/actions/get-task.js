@@ -1,3 +1,5 @@
+const axios = require('axios')
+const kintoneService = require('./kintone')
 /**
  * Get task(s) from kintone
  * @title Get task(s) from kintone
@@ -13,52 +15,39 @@ const getTask = async (assignee, status, dueDateString) => {
     return
   }
 
-  const userData = await bp.users.getAttributes(event.channel, event.target);
-  bp.logger.info(JSON.stringify(userData))
-
   const dueDate = new Date(dueDateString);
 
-  const messages = [
-    {
-      type: 'text',
-      text: `Channel: **${event.channel}**`,
-      markdown: true
-    },
-    {
-      type: 'text',
-      text: `User: **${event.target}**`,
-      markdown: true
-    },
-    {
-      type: 'text',
-      text: `Assignee: **${assignee}**`,
-      markdown: true
-    },
-    {
-      type: 'text',
-      text: `Status: **${status}**`,
-      markdown: true
-    },
-    {
-      type: 'text',
-      text: `Due date: **${dueDate.toLocaleDateString()}**`,
-      markdown: true
-    },
-    {
-      type: 'text',
-      text: `App ID: **${event.state.user['appID']}**`,
-      markdown: true
-    },
-    {
-      type: 'text',
-      text: `Domain: **${event.state.user['domain']}**`,
-      markdown: true
-    }
-  ]
+  if (assignee === 'me' || assignee === 'my') {
+    assignee = event.target;
+  }
 
-  await bp.events.replyToEvent(event, messages)
+  try {
+    const taskList = await kintoneService.getTask(assignee, status, dueDate, event.state.user)
+    bp.logger.info(`Task count: ${taskList.length}`)
 
-  // temp[output] = assignee
+    const messages = [
+      {
+        type: 'text',
+        text: `Task count: ${taskList.length}`,
+        markdown: true
+      },
+    ]
+
+    await bp.events.replyToEvent(event, messages)
+  } catch (error) {
+    console.log(error)
+    bp.logger.error(`Task API Error: ${error.response.status} ${error.response.statusText}`)
+
+    const messages = [
+      {
+        type: 'text',
+        text: `*API Error*`,
+        markdown: true
+      },
+    ]
+
+    await bp.events.replyToEvent(event, messages)
+  }
 }
 
 return getTask(args.assignee, args.status, args.dueDate)
