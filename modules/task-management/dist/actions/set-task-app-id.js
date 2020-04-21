@@ -8,19 +8,9 @@
 const setTaskAppID = async (appID) => {
 
   try {
-    event.state.user['appID'] = appID
+    event.state.user['taskAppID'] = appID
 
     const messages = [
-      {
-        type: 'text',
-        text: `Channel **${event.channel}**`,
-        markdown: true
-      },
-      {
-        type: 'text',
-        text: `User **${event.target}**`,
-        markdown: true
-      },
       {
         type: 'text',
         text: `Task app ID is set to **${appID}**`,
