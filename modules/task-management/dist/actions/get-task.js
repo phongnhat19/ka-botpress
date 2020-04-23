@@ -25,13 +25,25 @@ const getTask = async (assignee, status, dueDateString) => {
     const taskList = await kintoneService.getTask(assignee, status, dueDate, event.state.user)
     bp.logger.info(`Task count: ${taskList.length}`)
 
+    const SUMMARY_FIELD_CODE = kintoneService.FIELD_CODE.TASK_MANAGEMENT.SUMMARY_FIELD_CODE
+    const RECORD_NUMBER_FIELD_CODE = kintoneService.FIELD_CODE.TASK_MANAGEMENT.RECORD_NUMBER_FIELD_CODE
+
     const messages = [
       {
         type: 'text',
-        text: `Task count: ${taskList.length}`,
+        text: `There ${taskList.length > 1 ? 'are' : 'is'} **${taskList.length}** ${status !== 'All' ? status : ''} task${taskList.length > 1 ? 's' : ''}`,
         markdown: true
       },
     ]
+
+    taskList.forEach((taskRecord) => {
+      const taskURL = `${kintoneService.DOMAIN}/k/${event.state.user['taskAppID']}/show#record=${taskRecord.$id.value}`
+      messages.push({
+        type: 'text',
+        text: `<a href="${taskURL}" target="_blank">${taskRecord[RECORD_NUMBER_FIELD_CODE].value}: ${taskRecord[SUMMARY_FIELD_CODE].value}</a>`,
+        markdown: true
+      })
+    });
 
     await bp.events.replyToEvent(event, messages)
   } catch (error) {
@@ -41,7 +53,7 @@ const getTask = async (assignee, status, dueDateString) => {
     const messages = [
       {
         type: 'text',
-        text: `*API Error*`,
+        text: `*Task API Error*: ${error.response ? error.response.status : ''} ${error.response ? error.response.statusText : ''}`,
         markdown: true
       },
     ]
