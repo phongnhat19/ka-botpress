@@ -15,7 +15,10 @@ const getTask = async (assignee, status, dueDateString) => {
     return
   }
 
-  const dueDate = new Date(dueDateString);
+  let dueDate = null
+  if (dueDateString) {
+    dueDate = new Date(dueDateString);
+  }
 
   if (assignee === 'me' || assignee === 'my') {
     assignee = event.target;
