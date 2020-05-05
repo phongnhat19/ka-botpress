@@ -1,5 +1,5 @@
 name: Codestyle
-on: [pull_request]
+on: [push, pull_request]
 jobs:
   run_prettier:
     name: Run Prettier on codebase
