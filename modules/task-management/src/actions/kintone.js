@@ -1,6 +1,6 @@
 const axios = require('axios');
 const CONFIG = {
-  DOMAIN: 'https://cbz-vnsc.cybozu.com',
+  DOMAIN: 'https://nhat-nguyen.kintone-dev.com',
   TASK_MANAGEMENT: {
     ASSIGNEE_FIELD_CODE: 'User_selection_3',
     STATUS_FIELD_CODE: 'Drop_down_1',
