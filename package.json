@@ -52,7 +52,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.1",
     "ldapauth-fork": "^4.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "lodash-decorators": "^6.0.0",
     "lru-cache": "^5.1.1",
     "ml-kmeans": "^5.0.0",
